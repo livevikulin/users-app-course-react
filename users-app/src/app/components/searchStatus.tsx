@@ -1,7 +1,7 @@
 import React from "react";
 
 interface Props {
-    length: number
+    length: number;
 }
 
 const SearchStatus = ({ length }: Props) => {

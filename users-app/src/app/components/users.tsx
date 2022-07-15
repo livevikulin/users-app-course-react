@@ -1,16 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import User from "./user";
+import Pagination from "./pagination";
+import { paginate } from "../../utils/paginate";
 
 interface Props {
-    users: any,
-    onDelete: (param: string) => void,
-    onToggleBookMark: (param: string) => void,
+    users: any;
+    onDelete: (param: string) => void;
+    onToggleBookMark: (param: string) => void;
 }
 
-const Users = ({ users, ...rest }: Props) => {
+const Users = ({ users: allUsers, ...rest }: Props) => {
+    const [currentPage, setCurrentPage] = useState(1);
+    const count = allUsers.length;
+    const pageSize = 4;
+
+    const handlePageChange = (pageIndex: number) => {
+        setCurrentPage(pageIndex);
+    };
+
+    const users = paginate(allUsers, currentPage, pageSize);
+
     return (
         <>
-            {users.length > 0 && (
+            {count > 0 && (
                 <table className="table">
                     <thead>
                         <tr>
@@ -30,6 +42,12 @@ const Users = ({ users, ...rest }: Props) => {
                     </tbody>
                 </table>
             )}
+            <Pagination
+                itemsCount={count}
+                pageSize={pageSize}
+                onPageChange={handlePageChange}
+                currentPage={currentPage}
+            />
         </>
     );
 };

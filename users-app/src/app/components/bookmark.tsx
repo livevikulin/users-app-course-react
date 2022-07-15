@@ -1,14 +1,14 @@
 import React from "react";
 
 interface Props {
-    status: boolean,
-    onClick: any,
+    status: boolean;
+    onClick: any;
 }
 
 const BookMark = ({ status, ...rest }: Props) => {
     return (
-        <button {...rest}>
-            <i className={"bi bi-bookmark" + (status ? "-heart-fill" : "")}></i>
+        <button className="btn btn-outline-primary" {...rest}>
+            <i className={`bi bi-bookmark-heart${status ? "-fill" : ""}`} />
         </button>
     );
 };

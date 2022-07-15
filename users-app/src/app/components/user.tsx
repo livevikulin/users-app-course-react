@@ -1,17 +1,17 @@
 import React from "react";
-import Qualitie from "./qualitie";
+import Quality from "./quality";
 import BookMark from "./bookmark";
 
 interface Props {
-    _id: string,
-    name: string,
-    qualities: any,
-    profession: any,
-    completedMeetings: string,
-    rate: string,
-    onDelete: (param: any) => void,
-    bookmark: boolean,
-    onToggleBookMark: (param: any) => void,
+    _id: string;
+    name: string;
+    qualities: any;
+    profession: any;
+    completedMeetings: string;
+    rate: string;
+    onDelete: (param: any) => void;
+    bookmark: boolean;
+    onToggleBookMark: (param: any) => void;
 }
 
 const User = ({
@@ -23,14 +23,14 @@ const User = ({
     rate,
     onDelete,
     bookmark,
-    onToggleBookMark,
+    onToggleBookMark
 }: Props) => {
     return (
         <tr>
             <td>{name}</td>
             <td>
-                {qualities.map((qualitie: any) => (
-                    <Qualitie key={qualitie._id} {...qualitie} />
+                {qualities.map((quality: any) => (
+                    <Quality key={quality._id} {...quality} />
                 ))}
             </td>
             <td>{profession.name}</td>
